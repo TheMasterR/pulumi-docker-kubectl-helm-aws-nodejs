@@ -23,7 +23,7 @@ RUN apt update && apt install curl wget unzip python git -y \
     && curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" \
     && unzip awscli-bundle.zip \
     && ./awscli-bundle/install -b /bin/aws \
-    && rm -rf ./awscli-bundle \
+    && rm -rf ./awscli-bundle awscli-bundle.zip \
     && curl https://get.docker.com | bash \
     && rm -rf /var/lib/apt/lists/* \
     && apt clean
