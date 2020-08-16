@@ -1,0 +1,24 @@
+version: '3.5'
+
+networks:
+  pulumi:
+    driver: bridge
+
+services:
+  pulumi:
+    image: pulumi
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: pulumi
+    hostname: pulumi
+    volumes:
+      - ./:/pulumi/projects/
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - PULUMI_ACCESS_TOKEN=${PULUMI_ACCESS_TOKEN}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+    networks:
+      - creatopy
+    entrypoint: /bin/bash -c "npm ci && pulumi stack init dev || true && pulumi stack select dev && pulumi up --skip-preview --yes -s dev"
