@@ -33,12 +33,12 @@ ENV PULUMI_ACCESS_TOKEN=
 ENV AWS_ACCESS_KEY_ID=
 ENV AWS_SECRET_ACCESS_KEY=
 
-# next install required modules { npm packages }
-COPY infrastructure/k8s/package*.json infrastructure/k8s/
-RUN cd infrastructure/k8s && npm ci && cd ../../
+# next install required modules { npm packages } - eg:
+# COPY infrastructure/k8s/package*.json infrastructure/k8s/
+# RUN cd infrastructure/k8s && npm ci && cd ../../
 
-COPY infrastructure/aws/package*.json infrastructure/aws/
-RUN cd infrastructure/aws && npm ci && cd ../../
+# COPY infrastructure/aws/package*.json infrastructure/aws/
+# RUN cd infrastructure/aws && npm ci && cd ../../
 
 # EXAMPLE usage
 
