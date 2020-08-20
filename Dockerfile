@@ -1,5 +1,5 @@
 # start from pulumi nodejs (has nodejs + pulumi binary)
-FROM pulumi/pulumi-nodejs:2.8.2
+FROM pulumi/pulumi-nodejs:2.9.0
 
 # Metadata
 LABEL org.label-schema.name="pulumi-docker-kubectl-helm-aws-nodejs" \
